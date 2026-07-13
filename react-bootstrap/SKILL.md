@@ -68,10 +68,12 @@ export default defineConfig({
 })
 ```
 
-Update `src/index.css` to import TailwindCSS:
+Update `src/index.css` to import TailwindCSS at the top (keep existing CSS):
 
 ```css
 @import "tailwindcss";
+
+/* existing Vite template CSS remains below */
 ```
 
 ### 4. Add Vitest
