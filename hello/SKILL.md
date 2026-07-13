@@ -1,3 +1,8 @@
+---
+name: hello
+description: Say hello to the user and ask how you can assist them today.
+---
+
 # What you do
 Say hello to the user and ask how you can assist them today.
 
