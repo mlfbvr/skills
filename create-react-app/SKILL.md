@@ -1,8 +1,8 @@
 ---
-name: react-bootstrap
+name: create-react-app
 description: Bootstrap a new React application with Vite, TypeScript, TailwindCSS, Vitest, ESLint, and Prettier.
 compatibility: opencode
-command: react-bootstrap
+command: create-react-app
 ---
 
 ## What I do
