@@ -1,6 +1,6 @@
 ---
 name: create-react-app
-description: Bootstrap a new React application with Vite, TypeScript, TailwindCSS, Vitest, ESLint, and Prettier.
+description: Bootstrap a new React application with Vite, TypeScript, CSS Modules, Vitest, ESLint, and Prettier.
 compatibility: opencode
 command: create-react-app
 ---
@@ -8,7 +8,7 @@ command: create-react-app
 ## What I do
 
 - Create a new React application using Vite with TypeScript
-- Configure TailwindCSS using the official Vite plugin
+- Set up CSS Modules with a sample component
 - Set up Vitest for testing
 - Configure ESLint (from Vite template) and Prettier
 - Install all dependencies
@@ -50,30 +50,47 @@ fi
 $PACKAGE_MANAGER create vite . --template react-ts
 ```
 
-### 3. Add TailwindCSS
+### 3. Set up CSS Modules
 
-```bash
-$PACKAGE_MANAGER add -D @tailwindcss/vite
-```
+CSS modules work out of the box in Vite — any `*.module.css` file is treated as a CSS module.
 
-Update `vite.config.ts` to include the TailwindCSS plugin:
-
-```typescript
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
-
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
-})
-```
-
-Update `src/index.css` to import TailwindCSS at the top (keep existing CSS):
+Create `src/App.module.css`:
 
 ```css
-@import "tailwindcss";
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
 
-/* existing Vite template CSS remains below */
+.title {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.readTheDocs {
+  color: #888;
+}
+```
+
+Update `src/App.tsx` to use the CSS module:
+
+```tsx
+import styles from './App.module.css'
+
+function App() {
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Vite + React</h1>
+      <div className={styles.readTheDocs}>
+        Edit src/App.tsx and save to test HMR
+      </div>
+    </div>
+  )
+}
+
+export default App
 ```
 
 ### 4. Add Vitest
@@ -159,7 +176,7 @@ $PACKAGE_MANAGER install
 After creating the app, I provide:
 
 1. **Files created**: List of key files and directories
-2. **Tools installed**: Vite, React, TypeScript, TailwindCSS, Vitest, ESLint, Prettier
+2. **Tools installed**: Vite, React, TypeScript, CSS Modules, Vitest, ESLint, Prettier
 3. **Next steps**: How to start development (`pnpm dev`)
 
 ## Example Output
@@ -169,9 +186,9 @@ After creating the app, I provide:
 
 Files created:
 - src/App.tsx (main component)
+- src/App.module.css (CSS module styles)
 - src/main.tsx (entry point)
-- src/index.css (with TailwindCSS)
-- vite.config.ts (with TailwindCSS plugin)
+- src/index.css (global styles)
 - vitest.config.ts (test configuration)
 - src/test/setup.ts (test setup)
 - .prettierrc (Prettier config)
@@ -181,7 +198,7 @@ Tools installed:
 - Vite (build tool)
 - React 18+ (UI library)
 - TypeScript (type safety)
-- TailwindCSS (utility-first CSS)
+- CSS Modules (built into Vite)
 - Vitest (testing framework)
 - ESLint (linting)
 - Prettier (code formatting)
@@ -198,7 +215,7 @@ Before presenting the created app, verify:
 
 - [ ] React app detected or created successfully
 - [ ] TypeScript template used
-- [ ] TailwindCSS configured with Vite plugin
+- [ ] CSS Modules sample component created
 - [ ] Vitest configured and ready
 - [ ] ESLint and Prettier configured
 - [ ] All dependencies installed
